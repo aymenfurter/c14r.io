@@ -7,7 +7,7 @@
 ## Building the microservices locally
 The following commands can be used to build and run the end2end tests locally.
 
-`cd e2e && sh e2e.sh`
+`$ cd e2e && sh e2e.sh`
 
 
 ## Architecture
