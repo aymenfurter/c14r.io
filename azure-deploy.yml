@@ -1,0 +1,50 @@
+resources:
+- repo: self
+
+trigger:
+ - master
+
+variables:
+  tag: '$(Build.BuildId)'
+
+stages:
+- stage: Build
+  displayName: Build image
+  jobs:
+  - job: Build
+    displayName: Build
+    pool:
+      name: c14r
+    steps:
+      - task: CmdLine@2
+        name: PackageFrontend
+        displayName: Package Frontend
+        inputs:
+          script: 'docker build . -t ui'
+          workingDirectory: 'ui/'
+      - task: CmdLine@2
+        name: PackageDexter
+        displayName: Package Dexter Microservice
+        inputs:
+          script: 'mvn spring-boot:build-image'
+          workingDirectory: 'dexter/'
+      - task: CmdLine@2
+        name: PackageRidik
+        displayName: Package Ridik Microservice
+        inputs:
+          script: 'mvn spring-boot:build-image'
+          workingDirectory: 'ridik/'          
+      - task: CmdLine@2
+        name: PackageJobbie
+        displayName: Package Jobbie Microservice
+        inputs:
+          script: 'mvn spring-boot:build-image'
+          workingDirectory: 'jobbie/'     
+      - task: SSH@0
+        displayName: Redeploy Container      
+        inputs:
+          sshEndpoint: 'c14r-hetzner-infra'
+          runOptions: 'commands'
+          commands: 'sh /home/compose/compose/update-containers.sh'
+          failOnStdErr: false
+          readyTimeout: '20000'

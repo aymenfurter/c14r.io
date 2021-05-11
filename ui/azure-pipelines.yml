@@ -1,0 +1,16 @@
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+- task: Npm@1
+  inputs:
+    command: 'install'
+- task: Npm@1
+  inputs:
+    workingDir: 'ui'
+    command: 'ci'
+- task: Npm@1
+  inputs:
+    command: 'custom'
+    workingDir: 'ui'
+    customCommand: 'run build:prod'
