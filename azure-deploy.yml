@@ -1,9 +1,6 @@
 resources:
 - repo: self
 
-trigger:
- - master
-
 variables:
   tag: '$(Build.BuildId)'
 
