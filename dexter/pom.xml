@@ -11,6 +11,9 @@
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     <spring.boot-version>2.4.4</spring.boot-version>
     <surefire.plugin.version>3.0.0-M4</surefire.plugin.version>
+    <sonar.projectKey>c14r.dexter</sonar.projectKey>
+    <sonar.organization>aymenfurter</sonar.organization>
+    <sonar.host.url>https://sonarcloud.io</sonar.host.url>
   </properties>
   <dependencyManagement>
     <dependencies>
