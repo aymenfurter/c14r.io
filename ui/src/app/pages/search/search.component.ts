@@ -22,7 +22,7 @@ import { Infopanel } from './infopanel.component';
 
 export class SearchComponent {
   @ViewChild('visNetwork', { static: false }) visNetwork!: ElementRef;
-  @ViewChild('c14r-infopanel') infoPanel: Infopanel;
+  @ViewChild('infopanel') infoPanel: Infopanel;
   private networkInstance: any;
   private nodes: DataSet<any>;
   private edges: DataSet<any>;

@@ -2,10 +2,10 @@
   <div id="visNetwork" #visNetwork></div>
 </div>
 
-<infopanel [class.exampleModeHidden]="!exampleMode" class="row" (searchEvent)="onSearchImageEvent($event)">InfoPanel</infopanel>
+<infopanel [class.example-mode-hidden]="!exampleMode" class="row" (searchEvent)="onSearchImageEvent($event)">InfoPanel</infopanel>
 
 <div class="variants">
-  <div class="row variantDetail" *ngIf="hashes.length != 0">
+  <div class="row variant-detail" *ngIf="hashes.length != 0">
     <div class="col-md-12" *ngIf="detailDataTags.length != 0">
       <nb-card _nghost-pqu-c77="">
         <nb-card-header><b>Tags</b></nb-card-header>
@@ -39,10 +39,10 @@
     </div>
   </div>
 
-  <div class="row imageElement" *ngFor="let img of imageTree; let first=first;">
-    <div [class.arrowUp]="!first"></div>
+  <div class="row image-element" *ngFor="let img of imageTree; let first=first;">
+    <div [class.arrow-up]="!first"></div>
     <div class="col-md-12">
-      <nb-card _nghost-pqu-c77="" [class.selectedImage]="img[0].isRoot">
+      <nb-card _nghost-pqu-c77="" [class.selected-image]="img[0].isRoot">
         <nb-card-header> <a target="_blank" href="{{img[0].url}}">{{img[0].image}}</a>
           ({{formatDate(img[0].last_pushed)}}) </nb-card-header>
         <nb-card-body>
@@ -63,14 +63,11 @@
             [nbAutocomplete]="auto" class="input-full-width size-medium status-basic shape-rectangle nb-transition">
           <button type="button" nbButton (click)="expandAll(); ">Expand All</button>
           <button type="button" nbButton status="primary" (click)="resetSearch(); onSearch()">Inspect Image</button>
-
           <nb-autocomplete #auto (selectedChange)="onSelectionChange($event)">
             <nb-option *ngFor="let option of filteredOptions$ | async" [value]="option">
               {{ option }}
             </nb-option>
-
           </nb-autocomplete>
-
         </div>
       </nb-card-body>
     </nb-card>

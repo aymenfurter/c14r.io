@@ -1,25 +1,27 @@
-.variantDetail {
+
+$base-color: #00d68f;
+
+.variant-detail {
   margin-bottom: 50px;
 }
 
-.imageElement {
+.image-element {
   margin-top: -60px;
 }
 
-.arrowUp {
+.arrow-up {
   border-color: transparent transparent #000;
   border-style: solid;
   border-width: 30px;
-  height: 0px;
   width: 0px;
   margin-left: 190px;
   height: 0px;
 }
 
-.selectedImage {
-  border-color: #00d68f;
+.selected-image {
+  color: $base-color;
+  border-color: $base-color;
   border: 1px solid;
-  color: #00d68f;
 }
 
 .variants {
@@ -76,14 +78,14 @@ nb-card.inline-form-card nb-card-body {
 }
 
 a {
-  color: #00d68f;
+  color: $base-color;
 }
 
 .header-container {
   font-size: 12px;
 }
 
-.exampleModeHidden {
+.example-mode-hidden {
   display: none;
 }
 

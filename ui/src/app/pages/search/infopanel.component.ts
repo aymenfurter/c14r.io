@@ -6,11 +6,11 @@ import { Component, ElementRef, ViewChild, ChangeDetectionStrategy, OnInit, Outp
   templateUrl: './infopanel.component.html'
 })
 export class Infopanel {
-  loadExample(): void {    
+  loadHubExample(): void {    
       this.fireSearchEvent("library/debian:bullseye");
   }
   
-  loadExample2(): void {
+  loadMcrExample(): void {
       this.fireSearchEvent("mcr.microsoft.com/dotnet/core/runtime-deps:latest");
   }
 
