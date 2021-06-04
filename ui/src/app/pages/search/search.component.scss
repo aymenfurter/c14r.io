@@ -1,0 +1,94 @@
+.variantDetail {
+  margin-bottom: 50px;
+}
+
+.imageElement {
+  margin-top: -60px;
+}
+
+.arrowUp {
+  border-color: transparent transparent #000;
+  border-style: solid;
+  border-width: 30px;
+  height: 0px;
+  width: 0px;
+  margin-left: 190px;
+  height: 0px;
+}
+
+.selectedImage {
+  border-color: #00d68f;
+  border: 1px solid;
+  color: #00d68f;
+}
+
+.variants {
+  margin-top: 80px;
+  width: 400px;
+  z-index: 50;
+}
+
+.search {
+  position: fixed;
+  left: 0px;
+  right: 0px;
+  top: 89px;
+  z-index: 75;
+}
+
+pre {
+  color: white;
+  font-size: 9pt;
+  line-height: 100%;
+  overflow-y: hidden;
+}
+
+#visNetwork {
+  height: 100%;
+  position: fixed;
+  left: 0px;
+  right: 10px;
+  top: 200px;
+  outline: none;
+  width: 100%;
+  z-index: 0
+}
+
+nb-checkbox {
+  margin-bottom: 1rem;
+}
+
+.form-inline [fullWidth] {
+  flex: 1;
+}
+
+.form-inline>* {
+  margin: 0 1.5rem 1.5rem 0;
+}
+
+nb-card.inline-form-card nb-card-body {
+  padding-bottom: 0;
+}
+
+.imageVariant {
+  float: left;
+  padding: 2px;
+}
+
+a {
+  color: #00d68f;
+}
+
+.header-container {
+  font-size: 12px;
+}
+
+.exampleModeHidden {
+  display: none;
+}
+
+@media all and (max-width: 640px) {
+  #visNetwork {
+    display: none;
+  }
+}

@@ -21,6 +21,7 @@ import { DataSet } from 'vis-data';
 import { Network } from 'vis-network';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { Infopanel } from './infopanel.component';
 
 @NgModule({
   imports: [
@@ -42,6 +43,7 @@ import { FormsModule } from '@angular/forms';
   ],
   declarations: [
     SearchComponent,
+    Infopanel
   ],
   providers: [
   ],
