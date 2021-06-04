@@ -12,14 +12,17 @@ import {
 } from '@nebular/theme';
 import { Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { Infopanel } from './infopanel.component';
 
 @Component({
   selector: 'ngx-search',
+  styleUrls: ['./search.component.scss'],
   templateUrl: './search.component.html',
 })
 
 export class SearchComponent {
- @ViewChild('visNetwork', { static: false }) visNetwork!: ElementRef;
+  @ViewChild('visNetwork', { static: false }) visNetwork!: ElementRef;
+  @ViewChild('infopanel') infoPanel: Infopanel;
   private networkInstance: any;
   private nodes: DataSet<any>;
   private edges: DataSet<any>;
@@ -252,20 +255,13 @@ export class SearchComponent {
       }
     });
   }
-
-
-  loadExample(): void {
-      this.imageName = "library/debian:bullseye";
-      this.onSearch();
-      this.updateImageDetails();        
-  }
-  
-  loadExample2(): void {
-      this.imageName = "mcr.microsoft.com/dotnet/core/runtime-deps:latest";
+ 
+  onSearchImageEvent(imageName: string): void {
+      this.imageName = imageName;
       this.onSearch();
       this.updateImageDetails();              
   }
-  
+
   expandAll(): void {
     if (this.foundNodes.size == 0) {
       this.showToast(this.status, "Please Notice", "You have to start a search first.");

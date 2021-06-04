@@ -1,0 +1,45 @@
+<div  class="col-md-4" style="margin-top: 100px">
+  <nb-card class="size-medium">
+    <nb-card-header>General Information </nb-card-header>
+    <nb-card-body>
+      <h5>About</h5>
+      <p>
+        c14r is a tool that let's you visualize container image hierarchies.
+        You start by typing an image you would like to analyze. To open all the nodes you can click on “expand all”.
+        For further information about an image, you can click on it. c14r will show you all pushes done using that tag
+        and the corresponding instructions.
+      </p>
+      <h5>Updates</h5>
+      <ul class="mb-5">
+        <li>06/04/2021 - Maintenance: UI Code Cleanup & Security Patches</li> 
+        <li>05/02/2021 - Added Autocompletion</li>
+        <li>05/01/2021 - Added support for MCR</li>
+        <li>04/17/2021 - Launch</li>
+      </ul>
+    </nb-card-body>
+  </nb-card>
+</div>
+<div class="col-md-4" style="margin-top: 100px">
+  <nb-card class="size-medium">
+    <nb-card-header>Example 1: debian:bullseye</nb-card-header>
+    <nb-card-body >
+      <img src="assets/images/debian-screen.png" class="preview-picture" />
+      <p class="example-text">Bullseye is the development codename for Debian 11. Watch through the graph and observe
+        how more and more images are using and testing the new debian version!</p>
+      <button type="button" nbButton status="success" 
+        (click)="loadHubExample();">Show me this example, please</button>
+    </nb-card-body>
+  </nb-card>
+</div>
+<div class="col-md-4" style="margin-top: 100px">
+  <nb-card class="size-medium">
+    <nb-card-header>Example 2: mcr.microsoft.com/dotnet/core/runtime-deps:latest
+    </nb-card-header>
+    <nb-card-body>
+      <img src="assets/images/mcr-screen.png" class="preview-picture" />
+      <p class="example-text">A demonstration of MCR support. Not all images are supported yet.</p>
+      <button type="button" nbButton status="success"
+        (click)="loadMcrExample();">Show me this example, please</button>
+    </nb-card-body>
+  </nb-card>
+</div>
