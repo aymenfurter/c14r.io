@@ -1,0 +1,20 @@
+
+.search {
+  position: fixed;
+  left: 0px;
+  right: 0px;
+  top: 89px;
+  z-index: 75;
+}
+
+.form-inline [fullWidth] {
+  flex: 1;
+}
+
+.form-inline>* {
+  margin: 0 1.5rem 1.5rem 0;
+}
+
+nb-card.inline-form-card nb-card-body {
+  padding-bottom: 0;
+}

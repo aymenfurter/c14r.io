@@ -53,23 +53,4 @@
   </div>
 </div>
 
-<div class="row search">
-  <div class="col-md-12">
-    <nb-card class="inline-form-card">
-      <nb-card-body>
-        <div class="form-inline" name="searchForm">
-          <input #searchInput [(ngModel)]="imageName" type="text" (keyup.enter)="resetSearch(); onSearch()"
-            #ctrl="ngModel" nbInput fullWidth placeholder="input image (e.g. library/ubuntu:latest" (input)="onChange()"
-            [nbAutocomplete]="auto" class="input-full-width size-medium status-basic shape-rectangle nb-transition">
-          <button type="button" nbButton (click)="expandAll(); ">Expand All</button>
-          <button type="button" nbButton status="primary" (click)="resetSearch(); onSearch()">Inspect Image</button>
-          <nb-autocomplete #auto (selectedChange)="onSelectionChange($event)">
-            <nb-option *ngFor="let option of filteredOptions$ | async" [value]="option">
-              {{ option }}
-            </nb-option>
-          </nb-autocomplete>
-        </div>
-      </nb-card-body>
-    </nb-card>
-  </div>
-</div>
+<searchbar [api]="api" (expandAllEvent)="expandAll()" (newSearchEvent)="onNewSearchImageEvent($event)">Searchbar</searchbar>

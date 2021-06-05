@@ -22,6 +22,7 @@ import { Network } from 'vis-network';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { Infopanel } from './infopanel.component';
+import { Searchbar } from './searchbar.component';
 
 @NgModule({
   imports: [
@@ -43,6 +44,7 @@ import { Infopanel } from './infopanel.component';
   ],
   declarations: [
     SearchComponent,
+    Searchbar,
     Infopanel
   ],
   providers: [

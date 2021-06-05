@@ -10,9 +10,8 @@ import {
   NbToastrService,
   NbToastrConfig,
 } from '@nebular/theme';
-import { Observable, of } from 'rxjs';
-import { map } from 'rxjs/operators';
 import { Infopanel } from './infopanel.component';
+import { Searchbar } from './searchbar.component';
 
 @Component({
   selector: 'ngx-search',
@@ -23,6 +22,7 @@ import { Infopanel } from './infopanel.component';
 export class SearchComponent {
   @ViewChild('visNetwork', { static: false }) visNetwork!: ElementRef;
   @ViewChild('infopanel') infoPanel: Infopanel;
+  @ViewChild('searchbar') searchbar: Searchbar;
   private networkInstance: any;
   private nodes: DataSet<any>;
   private edges: DataSet<any>;
@@ -52,43 +52,6 @@ export class SearchComponent {
   preventDuplicates = false;
   status: NbComponentStatus = 'primary';
   private delay: any = 1;
-
-  options: string[];
-
-  filteredOptions$: Observable<string[]>;
-
-  @ViewChild('searchInput') input;
-
-  initOptions() {
-    this.options = [];
-    this.filteredOptions$ = of(this.options);
-  }
-
-  private filter(value: string): string[] {
-    const filterValue = value.toLowerCase();
-    return this.options.filter(optionValue => optionValue.toLowerCase().includes(filterValue));
-  }
-
-  getFilteredOptions(value: string): Observable<string[]> {
-
-    return of(value).pipe(
-      map(filterString => this.filter(filterString)),
-    );
-  }
-
-  onChange() {
-    var change = this;
-    this.api.getAutocomplete(this.imageName).subscribe(data => {
-      var qries = <Array<any>>data["queries"];
-      change.options = qries;
-      change.filteredOptions$ = change.getFilteredOptions(change.input.nativeElement.value);
-    });
-
-  }
-
-  onSelectionChange($event) {
-    this.filteredOptions$ = this.getFilteredOptions($event);
-  }
 
   constructor(private api: ApiService, private toastrService: NbToastrService) {}
 
@@ -217,12 +180,11 @@ export class SearchComponent {
             height: '100%',
             width: '100%',
             physics: {
-              // Even though it's disabled the options still apply to network.stabilize().
               enabled: true,
               stabilization: false,
               solver: "repulsion",
               repulsion: {
-                nodeDistance: 600 // Put more distance between the nodes.
+                nodeDistance: 600
               }
             },
             interaction: {
@@ -260,6 +222,12 @@ export class SearchComponent {
       this.imageName = imageName;
       this.onSearch();
       this.updateImageDetails();              
+  }
+
+  onNewSearchImageEvent(imageName: string): void {
+      this.imageName = imageName;
+      this.resetSearch();
+      this.onSearch();
   }
 
   expandAll(): void {
@@ -381,7 +349,6 @@ export class SearchComponent {
   }
 
   ngOnInit(): void {
-    this.initOptions();
     const queryString = window.location.search;
 
     if (queryString != null && queryString != "") {
@@ -391,12 +358,6 @@ export class SearchComponent {
       this.updateImageDetails();        
     }
   }
-
-  @ViewChild("searchInput") searchInputField: ElementRef;
-  ngAfterViewInit() {
-    this.searchInputField.nativeElement.focus();
-  }
-
 
   formatDate(toBeFormatted): string {
     const format = 'dd/MM/yyyy hh:mm';
