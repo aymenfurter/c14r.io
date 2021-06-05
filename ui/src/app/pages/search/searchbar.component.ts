@@ -59,7 +59,6 @@ export class Searchbar {
   onSelectionChange($event) {
     this.filteredOptions$ = this.getFilteredOptions($event);
   }
-
   
   ngOnInit(): void {
     this.initOptions();

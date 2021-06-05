@@ -23,6 +23,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { Infopanel } from './infopanel.component';
 import { Searchbar } from './searchbar.component';
+import { Variants } from './variants.component';
+;
 
 @NgModule({
   imports: [
@@ -45,7 +47,8 @@ import { Searchbar } from './searchbar.component';
   declarations: [
     SearchComponent,
     Searchbar,
-    Infopanel
+    Infopanel,
+    Variants
   ],
   providers: [
   ],

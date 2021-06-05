@@ -2,7 +2,6 @@ import { Component, ElementRef, ViewChild, ChangeDetectionStrategy, OnInit } fro
 import { DataSet } from 'vis-data';
 import { Network } from 'vis-network';
 import { ApiService } from './../../api.service';
-import { formatDate } from "@angular/common";
 import {
   NbComponentStatus,
   NbGlobalPhysicalPosition,
@@ -12,6 +11,8 @@ import {
 } from '@nebular/theme';
 import { Infopanel } from './infopanel.component';
 import { Searchbar } from './searchbar.component';
+import { Variants } from './variants.component';
+import { formatDate } from '@angular/common';
 
 @Component({
   selector: 'ngx-search',
@@ -23,9 +24,11 @@ export class SearchComponent {
   @ViewChild('visNetwork', { static: false }) visNetwork!: ElementRef;
   @ViewChild('infopanel') infoPanel: Infopanel;
   @ViewChild('searchbar') searchbar: Searchbar;
+  @ViewChild('variants') variants: Variants;
   private networkInstance: any;
   private nodes: DataSet<any>;
   private edges: DataSet<any>;
+  api: ApiService;
   private foundNodes = new Map();
   private expandedNodes = new Map();
   private requested = new Map();
@@ -53,7 +56,7 @@ export class SearchComponent {
   status: NbComponentStatus = 'primary';
   private delay: any = 1;
 
-  constructor(private api: ApiService, private toastrService: NbToastrService) {}
+  constructor(api: ApiService, private toastrService: NbToastrService) { this.api = api;}
 
   resetSearch() {
           this.edges = new DataSet<any>([]);
@@ -359,13 +362,6 @@ export class SearchComponent {
     }
   }
 
-  formatDate(toBeFormatted): string {
-    const format = 'dd/MM/yyyy hh:mm';
-    const locale = 'en-US';
-    const formattedDate = formatDate(toBeFormatted, format, locale);
-    return formattedDate;
-  }
-
   private showToast(type: NbComponentStatus, title: string, body: string) {
     const config = {
       status: type,
@@ -382,4 +378,10 @@ export class SearchComponent {
       config);
   }
     
+  formatDate(toBeFormatted): string {
+    const format = 'dd/MM/yyyy hh:mm';
+    const locale = 'en-US';
+    const formattedDate = formatDate(toBeFormatted, format, locale);
+    return formattedDate;
+  }
 }

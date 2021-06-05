@@ -1,9 +1,4 @@
-
 $base-color: #00d68f;
-
-.variant-detail {
-  margin-bottom: 50px;
-}
 
 .image-element {
   margin-top: -60px;
@@ -24,26 +19,6 @@ $base-color: #00d68f;
   border: 1px solid;
 }
 
-.variants {
-  margin-top: 80px;
-  width: 400px;
-  z-index: 50;
-}
-
-.search {
-  position: fixed;
-  left: 0px;
-  right: 0px;
-  top: 89px;
-  z-index: 75;
-}
-
-pre {
-  color: white;
-  font-size: 9pt;
-  line-height: 100%;
-  overflow-y: hidden;
-}
 
 #visNetwork {
   height: 100%;
@@ -58,23 +33,6 @@ pre {
 
 nb-checkbox {
   margin-bottom: 1rem;
-}
-
-.form-inline [fullWidth] {
-  flex: 1;
-}
-
-.form-inline>* {
-  margin: 0 1.5rem 1.5rem 0;
-}
-
-nb-card.inline-form-card nb-card-body {
-  padding-bottom: 0;
-}
-
-.imageVariant {
-  float: left;
-  padding: 2px;
 }
 
 a {
@@ -93,4 +51,21 @@ a {
   #visNetwork {
     display: none;
   }
+}
+
+pre {
+  color: white;
+  font-size: 9pt;
+  line-height: 100%;
+  overflow-y: hidden;
+}
+
+.variant-detail {
+  margin-bottom: 50px;
+}
+
+.details {
+  margin-top: 80px;
+  width: 400px;
+  z-index: 50;
 }
