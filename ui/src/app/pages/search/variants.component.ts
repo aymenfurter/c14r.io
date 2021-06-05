@@ -1,5 +1,6 @@
 import { Input, Component, ElementRef, ViewChild, ChangeDetectionStrategy, OnInit, Output, EventEmitter } from '@angular/core';
 import { formatDate } from "@angular/common";
+import { DateFormat } from './date';
 
 @Component({
   selector: 'variants',
@@ -13,6 +14,8 @@ export class Variants {
   @Input('slimMode') slimMode;
   @Input('currentHash') currentHash;
 
+  constructor(private date: DateFormat) {}
+  
   @Output() selectHashEvent = new EventEmitter<string>();
   fireSelectHashEvent(hash: string) {
     this.selectHashEvent.emit(hash);
@@ -24,10 +27,7 @@ export class Variants {
   }
 
   formatDate(toBeFormatted): string {
-    const format = 'dd/MM/yyyy hh:mm';
-    const locale = 'en-US';
-    const formattedDate = formatDate(toBeFormatted, format, locale);
-    return formattedDate;
+    return this.date.format(toBeFormatted);
   }
 
   toggleSlimMode() {

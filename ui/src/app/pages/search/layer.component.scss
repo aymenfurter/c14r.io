@@ -1,0 +1,20 @@
+
+$base-color: #00d68f;
+
+pre {
+  color: white;
+  font-size: 9pt;
+  line-height: 100%;
+  overflow-y: hidden;
+}
+
+a {
+  color: $base-color;
+}
+
+
+.selected-image {
+  color: $base-color;
+  border-color: $base-color;
+  border: 1px solid;
+}

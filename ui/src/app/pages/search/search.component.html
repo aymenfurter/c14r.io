@@ -4,19 +4,12 @@
 
 <infopanel [class.example-mode-hidden]="!exampleMode" class="row" (searchEvent)="onSearchImageEvent($event)">InfoPanel</infopanel>
 
-
 <div class="details">
   <variants class="row variant-detail" [currentHash]="currentHash" (selectHashEvent)="viewHash($event)" (selectTagEvent)="viewTag($event)" [slimMode]="slimMode" [detailDataTagsFull]="detailDataTagsFull" [detailDataTags]="detailDataTags" [hashes]="hashes"></variants>
-  <div class="row image-element" *ngFor="let img of imageTree; let first=first;">
+  <div class="row image-element" *ngFor="let img of imageTree; let first=first;">    
     <div [class.arrow-up]="!first"></div>
-    <div class="col-md-12">
-      <nb-card _nghost-pqu-c77="" [class.selected-image]="img[0].isRoot">
-        <nb-card-header> <a target="_blank" href="{{img[0].url}}">{{img[0].image}}</a>
-          ({{formatDate(img[0].last_pushed)}}) </nb-card-header>
-        <nb-card-body>
-          <pre>{{img[0].instructions}}</pre>
-        </nb-card-body>
-      </nb-card>
+    <div class="col-md-12">      
+      <layer [img]="img[0]"></layer>
     </div>
   </div>
 </div>

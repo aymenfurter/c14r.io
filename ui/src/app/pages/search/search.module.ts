@@ -24,6 +24,8 @@ import { FormsModule } from '@angular/forms';
 import { Infopanel } from './infopanel.component';
 import { Searchbar } from './searchbar.component';
 import { Variants } from './variants.component';
+import { Layer } from './layer.component';
+import { LeafletLayersDirective } from '@asymmetrik/ngx-leaflet';
 ;
 
 @NgModule({
@@ -48,7 +50,8 @@ import { Variants } from './variants.component';
     SearchComponent,
     Searchbar,
     Infopanel,
-    Variants
+    Variants,
+    Layer
   ],
   providers: [
   ],
