@@ -67,7 +67,6 @@ export class SearchComponent {
   }
 
   onSearch() {
-    __proto__: Object
     this.api.getNetwork(this.imageName)
       .subscribe(data => {
         var result = <Array<any>>data;
