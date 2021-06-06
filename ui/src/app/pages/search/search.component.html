@@ -4,72 +4,14 @@
 
 <infopanel [class.example-mode-hidden]="!exampleMode" class="row" (searchEvent)="onSearchImageEvent($event)">InfoPanel</infopanel>
 
-<div class="variants">
-  <div class="row variant-detail" *ngIf="hashes.length != 0">
-    <div class="col-md-12" *ngIf="detailDataTags.length != 0">
-      <nb-card _nghost-pqu-c77="">
-        <nb-card-header><b>Tags</b></nb-card-header>
-        <nb-card-body>
-          <div *ngFor="let tag of detailDataTags" class="imageVariant">
-            <button (click)="viewTag(tag)" [class.appearance-outline]="tag != currentTag"
-              [class.appearance-filled]="tag == currentTag" _ngcontent-fpr-c374="" nbbutton="" matripple=""
-              class="status-success appearance-outline mat-ripple appearance-filled size-tiny shape-rectangle status-info ng-star-inserted nb-transition"
-              aria-disabled="false" tabindex="0"> {{tag}} </button> <br />
-          </div> <br style="clear:both" />
-          <div *ngIf="detailDataTagsFull.length != 0 && slimMode">
-            <button (click)="toggleSlimMode()" _ngcontent-fpr-c374="" nbbutton="" matripple=""
-              class="status-success appearance-outline mat-ripple appearance-filled size-tiny shape-rectangle status-info ng-star-inserted nb-transition"
-              aria-disabled="false" tabindex="0"> ... </button> <br />
-          </div>
-        </nb-card-body>
-      </nb-card>
-    </div>
-    <div class="col-md-12">
-      <nb-card _nghost-pqu-c77="">
-        <nb-card-header>Variants (Pushes) </nb-card-header>
-        <nb-card-body>
-          <div *ngFor="let hash of hashes" class="imageVariant">
-            <button (click)="viewHash(hash)" [class.appearance-outline]="hash != currentHash"
-              [class.appearance-filled]="hash == currentHash" _ngcontent-fpr-c374="" nbbutton="" matripple=""
-              class="status-success appearance-outline mat-ripple appearance-filled size-tiny shape-rectangle status-basic ng-star-inserted nb-transition"
-              aria-disabled="false" tabindex="0"> {{formatDate(hash)}} </button> <br />
-          </div>
-        </nb-card-body>
-      </nb-card>
-    </div>
-  </div>
-
-  <div class="row image-element" *ngFor="let img of imageTree; let first=first;">
+<div class="details">
+  <variants class="row variant-detail" [currentHash]="currentHash" (selectHashEvent)="viewHash($event)" (selectTagEvent)="viewTag($event)" [slimMode]="slimMode" [detailDataTagsFull]="detailDataTagsFull" [detailDataTags]="detailDataTags" [hashes]="hashes"></variants>
+  <div class="row image-element" *ngFor="let img of imageTree; let first=first;">    
     <div [class.arrow-up]="!first"></div>
-    <div class="col-md-12">
-      <nb-card _nghost-pqu-c77="" [class.selected-image]="img[0].isRoot">
-        <nb-card-header> <a target="_blank" href="{{img[0].url}}">{{img[0].image}}</a>
-          ({{formatDate(img[0].last_pushed)}}) </nb-card-header>
-        <nb-card-body>
-          <pre>{{img[0].instructions}}</pre>
-        </nb-card-body>
-      </nb-card>
+    <div class="col-md-12">      
+      <layer [img]="img[0]"></layer>
     </div>
   </div>
 </div>
 
-<div class="row search">
-  <div class="col-md-12">
-    <nb-card class="inline-form-card">
-      <nb-card-body>
-        <div class="form-inline" name="searchForm">
-          <input #searchInput [(ngModel)]="imageName" type="text" (keyup.enter)="resetSearch(); onSearch()"
-            #ctrl="ngModel" nbInput fullWidth placeholder="input image (e.g. library/ubuntu:latest" (input)="onChange()"
-            [nbAutocomplete]="auto" class="input-full-width size-medium status-basic shape-rectangle nb-transition">
-          <button type="button" nbButton (click)="expandAll(); ">Expand All</button>
-          <button type="button" nbButton status="primary" (click)="resetSearch(); onSearch()">Inspect Image</button>
-          <nb-autocomplete #auto (selectedChange)="onSelectionChange($event)">
-            <nb-option *ngFor="let option of filteredOptions$ | async" [value]="option">
-              {{ option }}
-            </nb-option>
-          </nb-autocomplete>
-        </div>
-      </nb-card-body>
-    </nb-card>
-  </div>
-</div>
+<searchbar [api]="api" (expandAllEvent)="expandAll()" (newSearchEvent)="onNewSearchImageEvent($event)">Searchbar</searchbar>

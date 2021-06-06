@@ -22,6 +22,11 @@ import { Network } from 'vis-network';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { Infopanel } from './infopanel.component';
+import { Searchbar } from './searchbar.component';
+import { Variants } from './variants.component';
+import { Layer } from './layer.component';
+import { LeafletLayersDirective } from '@asymmetrik/ngx-leaflet';
+;
 
 @NgModule({
   imports: [
@@ -43,7 +48,10 @@ import { Infopanel } from './infopanel.component';
   ],
   declarations: [
     SearchComponent,
-    Infopanel
+    Searchbar,
+    Infopanel,
+    Variants,
+    Layer
   ],
   providers: [
   ],

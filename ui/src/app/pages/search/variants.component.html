@@ -1,0 +1,31 @@
+    <div class="col-md-12" *ngIf="detailDataTags.length != 0 && hashes.length != 0">
+      <nb-card _nghost-pqu-c77="">
+        <nb-card-header><strong>Tags</strong></nb-card-header>
+        <nb-card-body>
+          <div *ngFor="let tag of detailDataTags" class="imageVariant">
+            <button (click)="fireSelectTagEvent(tag)" [class.appearance-outline]="tag != currentTag"
+              [class.appearance-filled]="tag == currentTag" _ngcontent-fpr-c374="" nbbutton="" matripple=""
+              class="status-success appearance-outline mat-ripple appearance-filled size-tiny shape-rectangle status-info ng-star-inserted nb-transition"
+              aria-disabled="false" tabindex="0"> {{tag}} </button> <br />
+          </div> <br style="clear:both" />
+          <div *ngIf="detailDataTagsFull.length != 0 && slimMode">
+            <button (click)="toggleSlimMode()" _ngcontent-fpr-c374="" nbbutton="" matripple=""
+              class="status-success appearance-outline mat-ripple appearance-filled size-tiny shape-rectangle status-info ng-star-inserted nb-transition"
+              aria-disabled="false" tabindex="0"> ... </button> <br />
+          </div>
+        </nb-card-body>
+      </nb-card>
+    </div>
+    <div class="col-md-12" *ngIf="hashes.length != 0">
+      <nb-card _nghost-pqu-c77="">
+        <nb-card-header>Variants (Pushes) </nb-card-header>
+        <nb-card-body>
+          <div *ngFor="let hash of hashes" class="imageVariant">
+            <button (click)="fireSelectHashEvent(hash)" [class.appearance-outline]="hash != currentHash"
+              [class.appearance-filled]="hash == currentHash" _ngcontent-fpr-c374="" nbbutton="" matripple=""
+              class="status-success appearance-outline mat-ripple appearance-filled size-tiny shape-rectangle status-basic ng-star-inserted nb-transition"
+              aria-disabled="false" tabindex="0"> {{formatDate(hash)}} </button> <br />
+          </div>
+        </nb-card-body>
+      </nb-card>
+    </div>

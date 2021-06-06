@@ -1,0 +1,7 @@
+<nb-card [class.selected-image]="img.isRoot">
+  <nb-card-header> <a target="_blank" href="{{img.url}}">{{img.image}}</a>
+    ({{formatDate(img.last_pushed)}}) </nb-card-header>
+  <nb-card-body>
+    <pre>{{img.instructions}}</pre>
+  </nb-card-body>
+</nb-card>
