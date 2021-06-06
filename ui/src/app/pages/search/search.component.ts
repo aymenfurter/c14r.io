@@ -5,11 +5,11 @@ import { ApiService } from './../../api.service';
 import { Infopanel } from './infopanel.component';
 import { Searchbar } from './searchbar.component';
 import { Variants } from './variants.component';
-import { DockerHub } from './dockerhub';
 import { DateFormat } from './date';
 import { Graph } from './graph';
 import { Toaster } from './toaster';
 import { NetworkFactory } from './network';
+import { DetailView } from './detailview';
 
 @Component({
   selector: 'ngx-search',
@@ -24,7 +24,6 @@ export class SearchComponent {
   @ViewChild('variants') variants: Variants;
 
   requested = new Map();
-  private detailData;
   api: ApiService;
   exampleMode = true;
   slimMode = true;
@@ -39,7 +38,7 @@ export class SearchComponent {
   imageName: string;
   delay: any = 1;
 
-  constructor(private graph: Graph, private networkFactory: NetworkFactory, private toaster: Toaster, private date: DateFormat, private hub: DockerHub, api: ApiService) { this.api = api; graph.parent = this }
+  constructor(private detailView: DetailView, private graph: Graph, private networkFactory: NetworkFactory, private toaster: Toaster, private date: DateFormat, api: ApiService) { this.api = api; graph.parent = this; detailView.parent = this}
 
   resetSearch() {
     this.graph.reset();
@@ -104,54 +103,16 @@ export class SearchComponent {
   }
 
   processImage(value, comp, isRoot) {
-    comp.imageTree.push([{ "url": this.hub.getDockerHubURL(value.repositoryName, value.imageName, value.imageTag), "last_pushed": value.last_pushed, "instructions": value.instructions, "image": value.repositoryName + "/" + value.imageName + ":" + value.imageTag, "isRoot": isRoot }]);
-    if (value.parent != null) {
-      this.processImage(value.parent, comp, false);
-    }
+    this.detailView.processImage(value, comp, isRoot);
+
   }
 
   buildTree(): void {
-    var result = <Array<any>>this.detailData;
-    var componentScope = this;
-    componentScope.imageTree = [];
-    result.forEach(function (value) {
-      if (value.last_pushed == componentScope.currentHash) {
-        componentScope.processImage(value, componentScope, true);
-        componentScope.imageTree.reverse();
-      }
-    });
+    this.detailView.buildTree();
   }
 
   updateImageDetails(): void {
-    this.updateInProgress = true;
-    this.hashes = [];
-    this.api.getDetail(this.imageName).subscribe(data => {
-      var result = <Array<any>>data["variants"];
-      var alternativeTags = <Array<any>>data["tags"];
-      this.detailDataTags = alternativeTags;
-      this.detailDataTagsFull = [];
-
-      if (this.detailDataTags.length > 10 && this.slimMode) {
-        this.detailDataTagsFull = alternativeTags;
-        this.detailDataTags = alternativeTags.slice(0, 10);
-      }
-      this.detailData = result;
-      var comp = this;
-      this.currentTag = this.imageName.substr(this.imageName.indexOf(':') + 1, this.imageName.length);
-
-      if (result.length >= 1) this.currentHash = result[0].last_pushed;
-      var tempMap = new Map();
-      this.hashes = [];
-      result.forEach(function (value) {
-        if (tempMap.get(value.last_pushed) == null) {
-          comp.hashes.push(value.last_pushed);
-          tempMap.set(value.last_pushed, true);
-        }
-      });
-      this.buildTree();
-
-      this.updateInProgress = false;
-    })
+    this.detailView.updateImageDetails();
   }
 
   ngOnInit(): void {
@@ -176,7 +137,6 @@ export class SearchComponent {
       this.updateImageDetails();  
   }
 
-  
   expandAll(): void {
     this.graph.expandAll();
   }

@@ -159,7 +159,7 @@ export class Graph {
   onNodeClick(properties): void {
     var node = this.foundNodes.get(properties.nodes + "");
     if (node == null) {
-      node = this.nodes.get(properties.nodes[0]); // could replace logic 2 lines above
+      node = this.nodes.get(properties.nodes[0]);
     }
     if (node != null && node.label != null) {
       this.parent.viewNode(node);
