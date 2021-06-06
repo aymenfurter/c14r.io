@@ -8,7 +8,6 @@ export class DateFormat {
   format(toBeFormatted): string {
     const format = 'dd/MM/yyyy hh:mm';
     const locale = 'en-US';
-    const formattedDate = formatDate(toBeFormatted, format, locale);
-    return formattedDate;
+    return formatDate(toBeFormatted, format, locale);
   }
 }

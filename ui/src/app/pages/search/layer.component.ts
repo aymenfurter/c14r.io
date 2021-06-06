@@ -14,7 +14,4 @@ export class Layer {
   formatDate(toBeFormatted): string {
     return this.date.format(toBeFormatted);
   }
-
-  ngOnInit(): void {
-  }
 }

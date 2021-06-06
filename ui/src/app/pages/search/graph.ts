@@ -91,7 +91,7 @@ export class Graph {
       this.highlightNode(this.nodes, this.searchNode);
     }
 
-    for (const d of (data as any)) {
+    for (const d of (data)) {
       this.createSearchNode(d);
       this.addFoundNode(d);
       if (d.childOf != null) {

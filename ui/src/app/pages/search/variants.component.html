@@ -1,6 +1,6 @@
     <div class="col-md-12" *ngIf="detailDataTags.length != 0 && hashes.length != 0">
       <nb-card _nghost-pqu-c77="">
-        <nb-card-header><b>Tags</b></nb-card-header>
+        <nb-card-header><strong>Tags</strong></nb-card-header>
         <nb-card-body>
           <div *ngFor="let tag of detailDataTags" class="imageVariant">
             <button (click)="fireSelectTagEvent(tag)" [class.appearance-outline]="tag != currentTag"
@@ -16,7 +16,6 @@
         </nb-card-body>
       </nb-card>
     </div>
-    <!--<div class="col-md-12" *ngIf="hashes.length != 0">-->
     <div class="col-md-12" *ngIf="hashes.length != 0">
       <nb-card _nghost-pqu-c77="">
         <nb-card-header>Variants (Pushes) </nb-card-header>

@@ -33,7 +33,4 @@ export class Variants {
     this.detailDataTags = this.detailDataTagsFull;
     this.slimMode = false;
   }
-  
-  ngOnInit(): void {
-  }
 }
