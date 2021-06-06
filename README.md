@@ -1,7 +1,7 @@
 <kbd>![Architecture](screenshot.png?raw=true)</kdb>
 
 # C14R
-[![Microservices Buildpipeline](https://github.com/aymenfurter/c14r.io/actions/workflows/build.yml/badge.svg)](https://github.com/aymenfurter/c14r.io/actions/workflows/build.yml) [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=c14r.dexter&metric=alert_status)](https://sonarcloud.io/dashboard?id=c14r.dexter) [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=c14r.dexter&metric=alert_status)](https://sonarcloud.io/dashboard?id=c14r.ridik) [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=c14r.dexter&metric=alert_status)](https://sonarcloud.io/dashboard?id=c14r.jobbie)
+[![Microservices Buildpipeline](https://github.com/aymenfurter/c14r.io/actions/workflows/build.yml/badge.svg)](https://github.com/aymenfurter/c14r.io/actions/workflows/build.yml) [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=c14r.dexter&metric=alert_status)](https://sonarcloud.io/dashboard?id=c14r.dexter) [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=c14r.dexter&metric=alert_status)](https://sonarcloud.io/dashboard?id=c14r.ridik) [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=c14r.dexter&metric=alert_status)](https://sonarcloud.io/dashboard?id=c14r.jobbie) [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=c14r.ui&metric=alert_status)](https://sonarcloud.io/dashboard?id=c14r.ui)
 
 [C14R](https://c14r.io/) is a tool that let's you visualize image hierarchies. It currently supports indexing from DockerHub and MCR.
 
