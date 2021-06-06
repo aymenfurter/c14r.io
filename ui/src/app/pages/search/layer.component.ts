@@ -1,5 +1,4 @@
 import { Input, Component, ElementRef, ViewChild, ChangeDetectionStrategy, OnInit, Output, EventEmitter } from '@angular/core';
-import { formatDate } from "@angular/common";
 import { DateFormat } from './date';
 
 @Component({

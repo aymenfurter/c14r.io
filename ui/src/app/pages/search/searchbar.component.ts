@@ -13,6 +13,9 @@ export class Searchbar {
 
   @Output() newSearchEvent = new EventEmitter<string>();
   fireNewSearchEvent() {
+    if (this.imageName == null) return;
+    if (this.imageName != null && this.imageName.indexOf(":") == -1) this.imageName = this.imageName + ":latest";
+    if (this.imageName != null && this.imageName.indexOf("/") == -1) this.imageName = "library/" + this.imageName;
     this.newSearchEvent.emit(this.imageName);
   }
 
