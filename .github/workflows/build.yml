@@ -82,13 +82,11 @@ jobs:
     name: Check if Docker image for UI can be built
     runs-on: ubuntu-latest
     steps:  
-      -
-        name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v1         
-      -
-        name: Build        
-        working-directory: ui
-        run: docker build -t uitest .          
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v1            
+      - name: Test UI Build 
+        run: docker build -t uitest . 
+        working-directory: 'ui/'          
 
   build-ridik:
     name: Static Code Analysis for Ridik Microservice
