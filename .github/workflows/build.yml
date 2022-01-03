@@ -92,7 +92,7 @@ jobs:
         with:
           push: false
           file: ./ui/Dockerfile
-          context: ./ui/
+          context: ui/
 
   build-ridik:
     name: Static Code Analysis for Ridik Microservice
