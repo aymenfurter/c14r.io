@@ -11,7 +11,6 @@ import {
   NbAutocompleteModule,
 } from '@nebular/theme';
 import { NgxEchartsModule } from 'ngx-echarts';
-import { NgxChartsModule } from '@swimlane/ngx-charts';
 
 import { ThemeModule } from '../../@theme/theme.module';
 import { SearchComponent } from './search.component';
@@ -41,7 +40,6 @@ import { LeafletLayersDirective } from '@asymmetrik/ngx-leaflet';
     ChartModule,
     NbProgressBarModule,
     NgxEchartsModule,
-    NgxChartsModule,
     HttpClientModule,
     FormsModule,
     NbAutocompleteModule
