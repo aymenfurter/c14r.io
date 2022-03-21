@@ -23,6 +23,10 @@ export class Graph {
   
   constructor(private toaster: Toaster, private networkFactory: NetworkFactory) {}
 
+  amountNodes() {
+    return this.foundNodes.size;
+  } 
+
   handleNoResult(componentScope) {
     if (this.parent.delay != 4) {
       this.parent.refreshSearch(componentScope);

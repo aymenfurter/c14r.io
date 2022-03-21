@@ -27,6 +27,7 @@ export class SearchComponent {
   api: ApiService;
   exampleMode = true;
   slimMode = true;
+  imagesAmount = 0;
 
   hashes: string[] = [];
   imageTree: any[] = [];
@@ -75,6 +76,7 @@ export class SearchComponent {
         } else {
           this.graph.processResult(data);
         }
+        this.imagesAmount = this.graph.amountNodes(); 
       });
   }
 

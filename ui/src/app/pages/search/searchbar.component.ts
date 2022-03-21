@@ -10,6 +10,7 @@ import { map } from 'rxjs/operators';
 export class Searchbar {
   @Input('api') api;
   imageName: string;
+  @Input('imagesAmount') imagesAmount: Number;
 
   @Output() newSearchEvent = new EventEmitter<string>();
   fireNewSearchEvent() {
