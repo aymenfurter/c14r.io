@@ -10,6 +10,7 @@
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
+          "defaultConfiguration": "",
           "options": {
             "aot": true,
             "preserveSymlinks": true,
@@ -86,11 +87,17 @@
           }
         },
         "serve": {
+          "defaultConfiguration": "development",
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
             "browserTarget": "ngx-admin-demo:build"
           },
           "configurations": {
+            "development": {
+              "optimization": false,
+              "vendorChunk": true,
+              "sourceMap": true
+            },
             "production": {
               "browserTarget": "ngx-admin-demo:build:production"
             }
