@@ -23,19 +23,19 @@ stages:
         name: PackageDexter
         displayName: Package Dexter Microservice
         inputs:
-          script: 'mvn spring-boot:build-image'
+          script: './mvnw spring-boot:build-image'
           workingDirectory: 'dexter/'
       - task: CmdLine@2
         name: PackageRidik
         displayName: Package Ridik Microservice
         inputs:
-          script: 'mvn spring-boot:build-image'
+          script: './mvnw spring-boot:build-image'
           workingDirectory: 'ridik/'          
       - task: CmdLine@2
         name: PackageJobbie
         displayName: Package Jobbie Microservice
         inputs:
-          script: 'mvn spring-boot:build-image'
+          script: './mvnw spring-boot:build-image'
           workingDirectory: 'jobbie/'     
       - task: SSH@0
         displayName: Redeploy Container      
