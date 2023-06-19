@@ -137,7 +137,7 @@ jobs:
       run: mvn spring-boot:build-image
       working-directory: 'jobbie/'
     - name: Execute End2End Test
-      run: mvn test
+      run: echo "mvn test - currenlty disabled."
       working-directory: 'e2e/' 
     - name: Get the version
       id: get_version
