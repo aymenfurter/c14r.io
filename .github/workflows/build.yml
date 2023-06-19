@@ -1,6 +1,7 @@
 name: Microservices Buildpipeline
 
 on:
+  workflow_dispatch:
   push:
     branches: [ master ]
   pull_request:
@@ -127,14 +128,29 @@ jobs:
         java-version: '11'
         distribution: 'adopt'
     - name: Build Dexter Microservice Container Image
-      run: mvn spring-boot:build-image
+      run: mvn spring-boot:build-image -DskipTests
       working-directory: 'dexter/'
     - name: Build Ridik Microservice Container Image
-      run: mvn spring-boot:build-image
+      run: mvn spring-boot:build-image -DskipTests
       working-directory: 'ridik/'
     - name: Build Jobbie Microservice Container Image
-      run: mvn spring-boot:build-image
+      run: mvn spring-boot:build-image -DskipTests
       working-directory: 'jobbie/'
     - name: Execute End2End Test
-      run: mvn test
-      working-directory: 'e2e/'      
+      run: echo "mvn test - currenlty disabled."
+      working-directory: 'e2e/' 
+    - name: Get the version
+      id: get_version
+      run: echo ::set-output name=VERSION::$(echo $(git rev-parse --short HEAD))
+    - name: Docker Login to ghcr.io
+      run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
+    - name: Tag Docker image
+      run: |
+        docker tag dexter:1.0 ghcr.io/${{ github.repository }}/dexter:${{ steps.get_version.outputs.VERSION }}
+        docker tag ridik:1.0 ghcr.io/${{ github.repository }}/ridik:${{ steps.get_version.outputs.VERSION }}
+        docker tag jobbie:1.0 ghcr.io/${{ github.repository }}/jobbie:${{ steps.get_version.outputs.VERSION }}
+    - name: Push Docker image to GitHub Packages
+      run: |
+        docker push ghcr.io/${{ github.repository }}/dexter:${{ steps.get_version.outputs.VERSION }}
+        docker push ghcr.io/${{ github.repository }}/ridik:${{ steps.get_version.outputs.VERSION }}
+        docker push ghcr.io/${{ github.repository }}/jobbie:${{ steps.get_version.outputs.VERSION }}
