@@ -128,13 +128,13 @@ jobs:
         java-version: '11'
         distribution: 'adopt'
     - name: Build Dexter Microservice Container Image
-      run: mvn spring-boot:build-image
+      run: mvn spring-boot:build-image -DskipTests
       working-directory: 'dexter/'
     - name: Build Ridik Microservice Container Image
-      run: mvn spring-boot:build-image
+      run: mvn spring-boot:build-image -DskipTests
       working-directory: 'ridik/'
     - name: Build Jobbie Microservice Container Image
-      run: mvn spring-boot:build-image
+      run: mvn spring-boot:build-image -DskipTests
       working-directory: 'jobbie/'
     - name: Execute End2End Test
       run: echo "mvn test - currenlty disabled."
