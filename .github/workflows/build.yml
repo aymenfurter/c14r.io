@@ -80,7 +80,7 @@ jobs:
           SONAR_TOKEN: ${{ secrets.JOBBIE_SONAR_TOKEN }}
         run: cd jobbie && mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar  
   test-ui-image:
-    name: Check if Docker image for UI can be built
+    name: Docker image for UI
     runs-on: ubuntu-latest
     steps:  
       - uses: actions/checkout@v2
@@ -88,7 +88,18 @@ jobs:
         uses: docker/setup-buildx-action@v1            
       - name: Test UI Build 
         run: docker build -t uitest . 
-        working-directory: 'ui/'          
+        working-directory: 'ui/'    
+      - name: Get the version
+        id: get_version
+        run: echo ::set-output name=VERSION::$(echo $(git rev-parse --short HEAD))
+      - name: Docker Login to ghcr.io
+        run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
+      - name: Tag Docker image
+        run: |
+          docker tag uitest ghcr.io/${{ github.repository }}/ui:${{ steps.get_version.outputs.VERSION }}
+      - name: Push Docker image to GitHub Packages
+        run: |
+          docker push ghcr.io/${{ github.repository }}/ui:${{ steps.get_version.outputs.VERSION }}
 
   build-ridik:
     name: Static Code Analysis for Ridik Microservice
