@@ -13,9 +13,9 @@
     <sonar.organization>aymenfurter</sonar.organization>
     <sonar.host.url>https://sonarcloud.io</sonar.host.url>
     <testcontainer.version>1.17.3</testcontainer.version>
-    <camel.version>3.14.4</camel.version>
-    <jacoco.version>0.8.8</jacoco.version>
-    <spring.boot-version>2.6.8</spring.boot-version>
+    <camel.version>3.21.0</camel.version>
+    <jacoco.version>0.8.10</jacoco.version>
+    <spring.boot-version>2.7.13</spring.boot-version>
     <surefire.plugin.version>3.0.0-M7</surefire.plugin.version>
     <maven-compiler.version>3.10.1</maven-compiler.version>
   </properties>
