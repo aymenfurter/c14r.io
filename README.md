@@ -1,10 +1,23 @@
-<kbd>![Architecture](screenshot.png?raw=true)</kdb>
+<div id="top"></div>
 
-# C14R
-[![Microservices Buildpipeline](https://github.com/aymenfurter/c14r.io/actions/workflows/build.yml/badge.svg)](https://github.com/aymenfurter/c14r.io/actions/workflows/build.yml) [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=c14r.dexter&metric=alert_status)](https://sonarcloud.io/dashboard?id=c14r.dexter) [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=c14r.dexter&metric=alert_status)](https://sonarcloud.io/dashboard?id=c14r.ridik) [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=c14r.dexter&metric=alert_status)](https://sonarcloud.io/dashboard?id=c14r.jobbie) [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=c14r.ui&metric=alert_status)](https://sonarcloud.io/dashboard?id=c14r.ui)
+<br />
+<div align="center">
+    <img  src="screenshot.png?raw=true">
 
-[C14R](https://c14r.io/) is a tool that let's you visualize image hierarchies. It currently supports indexing from DockerHub and MCR.
+  <h1 align="center">c14r.io</h1>
+  <p align="center">
+    A tool that allows you to depict image structures. At present, it can index from DockerHub and MCR.
+    <br />
+    <br />
+    <a href="https://c14r.io">Try it now</a>
+    ·
+    Explore the deploy scripts (coming soon)
+  
+  [![Microservices Buildpipeline](https://github.com/aymenfurter/c14r.io/actions/workflows/build.yml/badge.svg)](https://github.com/aymenfurter/c14r.io/actions/workflows/build.yml) [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=c14r.dexter&metric=alert_status)](https://sonarcloud.io/dashboard?id=c14r.dexter) [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=c14r.dexter&metric=alert_status)](https://sonarcloud.io/dashboard?id=c14r.ridik) [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=c14r.dexter&metric=alert_status)](https://sonarcloud.io/dashboard?id=c14r.jobbie) [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=c14r.ui&metric=alert_status)](https://sonarcloud.io/dashboard?id=c14r.ui)
+  </p>
 
+</div>
+<br />
 
 ## Building the microservices locally
 The following commands can be used to build and run the end2end tests locally.
